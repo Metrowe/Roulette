@@ -5,12 +5,23 @@ void setup()
     scaler = (width+height)/2;
     
     gameMode = 0;
-
+    finalSize = 37;
+    
+    for(int i = 0; i < finalSize; i++)
+    {
+        bets[i] = new ArrayList<Bet>();
+    }//end for
 }//end setup
 
 float scaler;
+int finalSize;
 
 int gameMode;
+
+//Player data
+int cash;
+//ArrayList<Bet>[] bets;
+ArrayList<Bet>[] bets;
 
 void draw()
 {

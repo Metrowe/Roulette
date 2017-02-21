@@ -1,7 +1,6 @@
-
-boolean inRange(float value, float range)
+boolean inRange(float value, float range, float centre)
 {
-    if(value > -range && value < range)
+    if(value > centre-range/2 && value < centre+range/2)
     {
         return true;
     }//end if

@@ -19,7 +19,10 @@ class Bet
     {
         if(payout == next.payout)
         {
-            
+            chips += next.chips;
+            return true;
         }//end stack
+        
+        return false;
     }//end stack
 }//end Bet
