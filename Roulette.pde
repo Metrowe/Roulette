@@ -26,6 +26,8 @@ void setup()
     
     gameMode = 0;
     
+    
+    cash = 100;
     numbers = new color[37];
     loadData();
     
@@ -37,6 +39,7 @@ void setup()
     }//end for
     
     buildBoard();
+    createBetNodes();
 }//end setup
 
 float scaler;
@@ -60,14 +63,16 @@ int cash;
 //ArrayList[] bets;
 ArrayList<Bet>[] bets;
 
-ArrayList<BetNode>[] blocks;
-ArrayList<BetNode>[] edges;
+ArrayList<BetNode> blocks = new ArrayList<BetNode>();
+//ArrayList<BetNode> blocks;
+ArrayList<BetNode> nodes = new ArrayList<BetNode>();
+//ArrayList<BetNode> edges;
 
 color[] numbers;
 
 void draw()
 {
-  
+    background(255);
   //rect(10,10,10000,100000);
     //background(50);  
     //fill(0x00FF00);
@@ -89,6 +94,14 @@ void draw()
     shape(board);
     
     textBoard();
+    
+    viewBetNodes();
+    
+    
+    
+    
+    
+    displayInfo();
     switch(gameMode)
     {
         case 0:

@@ -20,32 +20,39 @@ class BetNode
         if(current > 0)
         {  
             clearStroke();
-            fill(0x0000FF);
-            ellipse(pos.x,pos.y,  boardScale*0.01, boardScale*0.01);
-            fill(0x000000);
-            textSize(boardScale * 0.001);
+            fill(0,0,255);
+            ellipse(pos.x,pos.y,  boardScale*0.03, boardScale*0.03);
+            fill(255);
+            textSize(boardScale * 0.02);
             textAlign(CENTER,CENTER);
             text(current,pos.x,pos.y);
         }//end if
         
     }//end render
     
-    void hover()
+    boolean hover()
     {
         if(  inRange(mouseX,size.x,pos.x)  &&  inRange(mouseY,size.y,pos.y)  )
         {
             noFill();
-            stroke(255);
-            strokeWeight(boardScale*0.001);
+            stroke(0,255,0);
+            strokeWeight(boardScale*0.003);
             
             rect(pos.x - size.x/2,pos.y - size.y/2,  size.x,size.y);
+            
+            return true;
         }//end if
+        
+        return false;
     }//end hover
     
-    Boolean ifClicked(PVector click,int chips)
+    //Boolean ifClicked(PVector click,int chips)
+    Boolean ifClicked(int chips)
     {
-        if(  inRange(click.x,size.x,pos.x)  &&  inRange(click.y,size.y,pos.y)  )
+        //if(  inRange(click.x,size.x,pos.x)  &&  inRange(click.y,size.y,pos.y)  )
+        if(  inRange(mouseX,size.x,pos.x)  &&  inRange(mouseY,size.y,pos.y)  )
         {
+            current += chips;
             cash -= chips;
             return true;
         }//end if
