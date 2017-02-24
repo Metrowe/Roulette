@@ -5,9 +5,17 @@ void mousePressed()
 
 void mouseClicked()
 {
-    for (int i = blocks.size() - 1; i > -1; i--) 
+    for (int i = buttons.size() - 1; i > -1; i--) 
     {
-        BetNode tempNode = blocks.get(i);
+        Button local = buttons.get(i);
+      
+        
+        local.ifClicked();
+    }//end for
+    
+    for (int i = nodes.size() - 1; i > -1; i--) 
+    {
+        BetNode tempNode = nodes.get(i);
       
         if(  tempNode.ifClicked(5)  )
         {
@@ -15,4 +23,5 @@ void mouseClicked()
         }//end if
 
     }//end for
+    
 }//end mouseClicked

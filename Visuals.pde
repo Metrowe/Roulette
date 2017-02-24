@@ -1,16 +1,16 @@
 void viewBetNodes()
 {
-    for (int i = blocks.size() - 1; i > -1; i--) 
+    for (int i = nodes.size() - 1; i > -1; i--) 
     {
-        BetNode tempNode = blocks.get(i);
+        BetNode tempNode = nodes.get(i);
       
         
         tempNode.render();
     }//end for
     
-    for (int i = blocks.size() - 1; i > -1; i--) 
+    for (int i = nodes.size() - 1; i > -1; i--) 
     {
-        BetNode tempNode = blocks.get(i);
+        BetNode tempNode = nodes.get(i);
         
         if(tempNode.hover())
         {
@@ -20,7 +20,16 @@ void viewBetNodes()
     
 }//end 
 
-
+void displayButtons()
+{
+    for (int i = buttons.size() - 1; i > -1; i--) 
+    {
+        Button local = buttons.get(i);
+      
+        
+        local.render();
+    }//end for
+}//end displayButtons
 
 void displayInfo()
 {
@@ -28,6 +37,11 @@ void displayInfo()
     textSize(scaler * 0.03);
     textAlign(LEFT,TOP);
     text("cash = " + cash,width*0,height*0);
+    text("testi = " + testi,width*0,height*0.05);
+    if(previous > -1)
+    {
+        text("previous = " + previous,width*0,height*0.1);
+    }//end if
 }//end displayInfo
 
 void clearStroke()

@@ -16,7 +16,8 @@ void setup()
     size(1000,500);
     //size(300,300);
     scaler = (width+height)/2;
-    boardScale = scaler * 1;
+    //boardScale = scaler * 1;
+    boardScale = scaler * 1.3;
     wheelScale = scaler * 1;
     
     grid = new PVector(boardScale * 0.05,boardScale * 0.07);
@@ -24,8 +25,9 @@ void setup()
     boardFix = new PVector(width*0.2,height*0.2);
     wheelFix = new PVector(width*0.2,height*0.2);
     
-    gameMode = 0;
+    buttons.add(  new SpinButton( "Spin",new PVector(width*0,height*0.9),new PVector(width*0.2,height*0.1),color(0,0,255) )  );
     
+    gameMode = 0;
     
     cash = 100;
     numbers = new color[37];
@@ -40,6 +42,11 @@ void setup()
     
     buildBoard();
     createBetNodes();
+    
+    //////////////////////
+    previous = -1;
+    testi = 0;
+    ///////////////////////
 }//end setup
 
 float scaler;
@@ -58,18 +65,23 @@ int gameMode;
 
 //Player data
 int cash;
+int previous;
 
 //I've no idea which of these is correct syntax
 //ArrayList[] bets;
 ArrayList<Bet>[] bets;
 
 ArrayList<BetNode> blocks = new ArrayList<BetNode>();
-//ArrayList<BetNode> blocks;
+
 ArrayList<BetNode> nodes = new ArrayList<BetNode>();
-//ArrayList<BetNode> edges;
+
+ArrayList<Button> buttons = new ArrayList<Button>();
 
 color[] numbers;
 
+////////////////////////////
+int testi;
+////////////////////////
 void draw()
 {
     background(255);
@@ -97,6 +109,7 @@ void draw()
     
     viewBetNodes();
     
+    displayButtons();
     
     
     

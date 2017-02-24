@@ -15,14 +15,13 @@ class Bet
         return chips + chips*payout;
     }//end result
     
-    boolean stack(Bet next)
+    boolean stack(int payout,int chipsIn)
     {
-        if(payout == next.payout)
+        if(this.payout == payout)
         {
-            chips += next.chips;
+            this.chips += chipsIn;
             return true;
         }//end stack
-        
         return false;
     }//end stack
 }//end Bet

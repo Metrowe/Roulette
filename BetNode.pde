@@ -50,8 +50,9 @@ class BetNode
     Boolean ifClicked(int chips)
     {
         //if(  inRange(click.x,size.x,pos.x)  &&  inRange(click.y,size.y,pos.y)  )
-        if(  inRange(mouseX,size.x,pos.x)  &&  inRange(mouseY,size.y,pos.y)  )
+        if(  inRange(mouseX,size.x,pos.x)  &&  inRange(mouseY,size.y,pos.y)  && cash >= chips)
         {
+            placeBets(payout,chips,values);
             current += chips;
             cash -= chips;
             return true;
