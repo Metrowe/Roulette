@@ -37,11 +37,14 @@ void displayInfo()
     textSize(scaler * 0.03);
     textAlign(LEFT,TOP);
     text("cash = " + cash,width*0,height*0);
-    text("testi = " + testi,width*0,height*0.05);
+    text("Round winnings = " + prevWinnings,width*0,height*0.05);
+    
     if(previous > -1)
     {
         text("previous = " + previous,width*0,height*0.1);
     }//end if
+    
+    //text("testi = " + testi,width*0,height*0.15);
 }//end displayInfo
 
 void clearStroke()

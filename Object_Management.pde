@@ -6,15 +6,19 @@ void createBetNodes()
     IntList tempListB;
     IntList tempListC;
     
-    BetNode tempNode;
-    //tempList.clear();
+    //Zero
+    tempListA = new IntList();
+    tempListA.append(0);
+    
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*1.5,boardFix.y+grid.y*1.5  ),  new PVector(  grid.x,grid.y*3  ),  tempListA, 35)  );
+
+    //Straights
     for(int i = 1, x = 0,y = 0; i < numbers.length; i++)
     {
         tempListA = new IntList();
         tempListA.append(i);
         
-        tempNode = new BetNode(  new PVector(  boardFix.x+grid.x*(x+2)+grid.x/2,boardFix.y+grid.y*(2-y)+grid.y/2  ),  new PVector(  grid.x,grid.y  ),  tempListA, 35);
-        nodes.add(tempNode);
+        nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*(x+2)+grid.x/2,boardFix.y+grid.y*(2-y)+grid.y/2  ),  new PVector(  grid.x,grid.y  ),  tempListA, 35)  );
         
         y = (y+1) % 3;
         
@@ -23,7 +27,96 @@ void createBetNodes()
             x++;
         }//end if
     }//end for
+
+    //2 to 1
+    tempListA = new IntList();
+    tempListB = new IntList();
+    tempListC = new IntList();
     
+    for(int i = 1; i < numbers.length; i++)
+    {
+        if(  i % 3 == 0  )
+        {
+            tempListA.append(i);
+        }//end if
+        else if(  i % 3 == 2  )
+        {
+            tempListB.append(i);
+        }//end else if
+        else
+        {
+            tempListC.append(i);
+        }//end else
+    }//end for
+    
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*14.5,boardFix.y+grid.y*0.5  ),  new PVector(  grid.x,grid.y  ),  tempListA, 2)      );
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*14.5,boardFix.y+grid.y*1.5  ),  new PVector(  grid.x,grid.y  ),  tempListB, 2)      );
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*14.5,boardFix.y+grid.y*2.5  ),  new PVector(  grid.x,grid.y  ),  tempListC, 2)      );
+    
+    //Dozens
+    tempListA = new IntList();
+    tempListB = new IntList();
+    tempListC = new IntList();
+    
+    for(int i = 1; i < numbers.length; i++)
+    {
+        if(  i < 13  )
+        {
+            tempListA.append(i);
+        }//end if
+        else if(  i > 13 && i < 27)
+        {
+            tempListB.append(i);
+        }//end else if
+        else
+        {
+            tempListC.append(i);
+        }//end else
+    }//end for
+    
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*4,boardFix.y+grid.y*3.5  ),  new PVector(  grid.x*4,grid.y  ),  tempListA, 2)      );
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*8,boardFix.y+grid.y*3.5  ),  new PVector(  grid.x*4,grid.y  ),  tempListB, 2)      );
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*12,boardFix.y+grid.y*3.5  ),  new PVector(  grid.x*4,grid.y  ),  tempListC, 2)      );
+    
+    //Lows-highs
+    tempListA = new IntList();
+    tempListB = new IntList();
+    
+    for(int i = 1; i < numbers.length; i++)
+    {
+        if(  i < 19  )
+        {
+            tempListA.append(i);
+        }//end if
+        else 
+        {
+            tempListB.append(i);
+        }//end else 
+    }//end for
+    
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*3,boardFix.y+grid.y*4.5  ),  new PVector(  grid.x*2,grid.y  ),  tempListA, 1)      );
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*13,boardFix.y+grid.y*4.5  ),  new PVector(  grid.x*2,grid.y  ),  tempListB, 1)      );
+    
+    //Evens-odds
+    tempListA = new IntList();
+    tempListB = new IntList();
+    
+    for(int i = 1; i < numbers.length; i++)
+    {
+        if(  i % 2 == 0  )
+        {
+            tempListA.append(i);
+        }//end if
+        else 
+        {
+            tempListB.append(i);
+        }//end else 
+    }//end for
+    
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*5,boardFix.y+grid.y*4.5  ),  new PVector(  grid.x*2,grid.y  ),  tempListA, 1)      );
+    nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*11,boardFix.y+grid.y*4.5  ),  new PVector(  grid.x*2,grid.y  ),  tempListB, 1)      );
+    
+    //Colours
     tempListA = new IntList();
     tempListB = new IntList();
     for(int i = 1; i < numbers.length; i++)
@@ -37,21 +130,21 @@ void createBetNodes()
             tempListB.append(i);
         }//end else
     }//end for
-    
-    /*
-    tempNode = new BetNode(  new PVector(  boardFix.x+grid.x*5.5,boardFix.y+grid.y*5.5  ),  new PVector(  grid.x,grid.y  ),  tempListA, 1);
-    nodes.add(tempNode);
-    */
+
     nodes.add(      new BetNode(  new PVector(  boardFix.x+grid.x*7,boardFix.y+grid.y*4.5  ),  new PVector(  grid.x*2,grid.y  ),  tempListA, 1)      );
     nodes.add(      new BetNode(  new PVector(  boardFix.x+grid.x*9,boardFix.y+grid.y*4.5  ),  new PVector(  grid.x*2,grid.y  ),  tempListB, 1)      );
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+    
     /*
+    //Split (Horizontal)
     for(int i = 1, x = 0,y = 0; i < numbers.length; i++)
     {
-        tempList = new IntList();
-        tempList.append(i);
+        tempListA = new IntList();
+        tempListA.append(i);
         
-        BetNode tempNode = new BetNode(  new PVector(  boardFix.x+grid.x*(x+2)+grid.x/2,boardFix.y+grid.y*(2-y)+grid.y/2  ),  new PVector(  grid.x,grid.y  ),  tempList, 35);
-        nodes.add(tempNode);
+        nodes.add(  new BetNode(  new PVector(  boardFix.x+grid.x*(x+2)+grid.x/2,boardFix.y+grid.y*(2-y)+grid.y/2  ),  new PVector(  grid.x,grid.y  ),  tempListA, 35)  );
         
         y = (y+1) % 3;
         
@@ -62,6 +155,11 @@ void createBetNodes()
     }//end for
     */
     
+    
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+
+
 }//end createNodes
 
 void placeBets(int payout, int chipsIn, IntList values)
@@ -115,8 +213,13 @@ void checkWin(int winner)
     {
         Bet local = bets[winner].get(i);
         
-        cash += local.result();
+        int temp = local.result();
+        cash += temp;
+        winnings += temp;
     }//end for
+    
+    prevWinnings = winnings;
+    winnings = 0;
     
     resetBets();
 }

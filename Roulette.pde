@@ -45,6 +45,8 @@ void setup()
     
     //////////////////////
     previous = -1;
+    winnings = 0;
+    prevWinnings = 0;
     testi = 0;
     ///////////////////////
 }//end setup
@@ -65,6 +67,8 @@ int gameMode;
 
 //Player data
 int cash;
+int winnings;
+int prevWinnings;
 int previous;
 
 //I've no idea which of these is correct syntax
